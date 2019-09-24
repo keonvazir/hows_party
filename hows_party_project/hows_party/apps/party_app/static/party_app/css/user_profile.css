@@ -1,0 +1,58 @@
+.btn1 {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 153px;
+    width: 300px;
+    height: 70px;
+    box-shadow: 5px 5px black;
+    border-radius: 20px;
+}
+.btn2 {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 153px;
+    width: 300px;
+    height: 70px;
+    box-shadow: 5px 5px black;
+    border-radius: 20px;
+}
+html,
+body {
+display: inline-block;
+  height: 100%;
+}
+
+#page-content {
+display: inline-block;
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 350px;
+  width: 100em;
+  border-radius: 20px;
+  box-shadow: 3px 3px black;
+}
+
+.rightheader {
+    display: inline-block;
+    margin-left: 1000px;
+    width:312px;
+    height:90px;
+    margin-top: 10px;
+    background-color:	#444444;
+    border-radius: 30px;
+    box-shadow:3px 3px;
+    
+}
+
+.upcoming {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: lighter;
+    margin-top: 100px;
+    margin-left: -500px;
+}

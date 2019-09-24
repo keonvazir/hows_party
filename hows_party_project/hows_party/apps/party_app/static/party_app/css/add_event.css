@@ -1,0 +1,35 @@
+
+.table {
+    width: auto;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 500px;
+    margin-top: -220px;
+}
+.add_guest{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 800px;
+}
+.btn{
+    display: inline-block;
+    vertical-align: top;
+    margin-left:400px;
+    width: 200px;
+    height: 75px;
+    border-radius: 37px;
+    box-shadow: 2px 2px black;
+}
+#map{
+    height: 500px;
+    width: 100%;
+    background-color: grey;
+
+}
+
+/* .event_loaction{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 500px;
+
+} */

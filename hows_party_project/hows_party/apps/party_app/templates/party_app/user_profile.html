@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Profile</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'party_app/css/user_profile.css' %}">
+    <link rel="stylesheet" href="{% static 'party_app/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'party_app/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="{% static 'party_app/js/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'party_app/js/bootstrap.bundle.min.js' %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Hows Party</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Meet the Team</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+        
+        <!-- Full Page Image Header with Vertically Centered Content -->
+        <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="font-weight-light">Vertically</h1>
+                </div>
+            </div>
+        </div>
+        </header>
+        <div class="rightheader">
+                <input type="search" placeholder="Search Events" style="background-color: white; width: 181px; height: 45px; text-align:center; font-weight:lighter; border:5px lightgrey; border-radius: 5px; margin-left:50px; margin-top:20px; vertical-align:bottom">
+                <button style="border-radius:5px; background-color:#254A68; color:white; font-family: Arial, Helvetica, sans-serif; margin-left: 248px; box-shadow: 2px 2px; width:50px; height:30px; margin-top:-70px;vertical-align: middle; display: inline-block">GO</button>
+
+            </div><!--end of rightheader -->
+        <!-- Page Content -->
+        <section class="py-5">
+        <div class="container">
+            <h2 class="font-weight-light">Get Started</h2>
+            <p>Getting started is easy. Just find friends and add an event! If you have no friends don't fret, we'll help you out.</p>
+        </div>
+        </section>
+
+    <button type="button" class="btn1 btn-primary">Add an Event</button>
+
+    <button type="button" class="btn2 btn-primary">Find Friends</button>
+    
+    <h2 class="upcoming">Upcoming Events</h2>
+    
+<div class="container-fluid">
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col"></th>
+            <th scope="col">Event Name</th>
+            <th scope="col">Date created</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row">1</th>
+            <td>Party at Mark'ss</td>
+            <td>Sept 20th</td>
+            <td><a href="/wishes/{{wish.id}}/destroy">Remove |</a><a href="/wishes/edit/{{wish.id}}">Edit |</a><a href="/wishes/{{wish.id}}/grant">Show!</a></td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <small>Copyright &copy; Your Website</small>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

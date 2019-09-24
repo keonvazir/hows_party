@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'party_app/css/user_profile.css' %}">
+    <link rel="stylesheet" href="{% static 'party_app/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'party_app/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="{% static 'party_app/css/edit.css' %}">
+
+    <script src="{% static 'party_app/js/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'party_app/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- <script src="{% static 'party_app/js/jquery.edit.js' %}"></script> -->
+    
+    <style>
+        #map {
+            height: 50%;
+        }
+        html, body {
+            height: 50%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="#">Hows Party</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                                <span class="sr-only">(current)</span>
+                        </a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Back</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                </nav>
+                
+                <!-- Full Page Image Header with Vertically Centered Content -->
+                <header class="masthead">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 text-center">
+                            <h1 class="font-weight-light">Vertically</h1>
+                            <p class="font-weight-bold">Add an Event</p>
+                        </div>
+                    </div>
+                </div>
+                </header>
+            <div class="add_guest">
+                <select>
+                    <option value="friend">Friend</option>
+                </select>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <label for="invite">
+                        <input type="submit" name="invite" value="Invite!">
+                    </label>
+                </form>
+            </div>
+        <form>
+        <div class="form-group row">
+            <label for="event_name" class="col-sm-2 col-form-label">Event Name
+            <input type="text" name="event_name">
+            </label>
+        </div>
+        <div class="form-group row">
+                <label for="event_description" class="col-sm-2 col-form-label">Description
+                <input type="text" name="event_description">
+                </label>
+            </div>
+            <div class="form-group row">
+                    <label for="event_date" class="col-sm-2 col-form-label">
+                    <input type="date" name="event_date">
+                    </label>
+                </div>
+            </div>
+
+        <!--TABLE-->
+        <div class="table-responsive-sm">
+            <table class="table table-condensed table-borderless table-hover">
+            <caption>Guests</caption>
+                <thead class="thead-dark">
+                    <tr>
+                    <th width="12%" scope="col">Name</th>
+                    <th width="12%" scope="col">Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    </tr>
+                </tbody>
+                </table>
+            <!--end of table-->
+        </div>
+
+        <div class="event_location">
+        <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.1940370061097!2d-122.1372801730916!3d37.43252069346078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbafb83b6ded7%3A0xddff2cc31c3fa3ad!2s2380%20Waverley%20St%2C%20Palo%20Alto%2C%20CA%2094301!5e0!3m2!1sen!2sus!4v1569310122302!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0; display: inline-block; vertical-align: top; margin-left: 500px;" allowfullscreen=""></iframe></p></div>
+        
+        <!-- <div id="map"></div>
+    <script>
+        function initMap() {
+            var uluru = {lat: -25.344, lng: 131.036};
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 4, center: uluru});
+            var marker = new google.maps.Marker({position: uluru, map: map});
+            }
+    </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8Wo_naqZdVTw8sdnwKBmksGyjV73txbY&callback=initMap">
+        </script> -->
+
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create Event!</button>
+            </div>
+        </div>
+    </form>
+
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>Copyright &copy; Your Website</small>
+    </div>
+    </footer>
+
+
+<!-- <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+
+<!-TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB8Wo_naqZdVTw8sdnwKBmksGyjV73txbY",
+    authDomain: "partyproject-1569306576583.firebaseapp.com",
+    databaseURL: "https://partyproject-1569306576583.firebaseio.com",
+    projectId: "partyproject-1569306576583",
+    storageBucket: "",
+    messagingSenderId: "937508809461",
+    appId: "1:937508809461:web:4f8be70b28f3ef8ef4b3bc",
+    measurementId: "G-CP1H6Y3DX4"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script> -->
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
