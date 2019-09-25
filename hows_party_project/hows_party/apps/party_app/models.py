@@ -15,7 +15,7 @@ class UserManager(models.Manager):
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(postData['email']):    # test whether a field matches the pattern          
             errors['email'] = ("Invalid email address!")
-        if len(postData['password']) < 8:
+        if len(postData['password']) < 3:
             errors["password"] = "Password should be at least 3 characters"
         if postData["password"] != postData["confirm_password"]:
             errors["confirm_password"]= "Password does not match"

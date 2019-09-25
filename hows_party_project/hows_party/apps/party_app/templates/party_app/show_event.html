@@ -95,6 +95,7 @@
                     <tr>
                     <th width="12%" scope="col">Name</th>
                     <th width="12%" scope="col">Username</th>
+                    <th width="12%" scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,6 +103,7 @@
                     <tr>
                     <td>{{friend.first_name}} {{friend.last_name}}</td>
                     <td>{{friend.username}}</td>  
+                    <td><a href="/show_event/{{event.id}}/destroy">Remove |</a></td>
                     </tr>
                     {% endfor %}  
                 </tbody>
@@ -124,10 +126,19 @@
             </div>
         </div>
     </div>
-    <form action="#" method="POST">
-        <input type="text" name="event_post">
+    <div class="post">
+    <form action="/add_message" method="POST">
+        {% csrf_token %}
+        <input type="text" name="message">
         <input type="submit" value="Make a Post">
     </form>
+</div>
+<div class="messages">
+    {% for message in all_messages%}
+    {{message.message}}
+    {{message.posted_by.first_name}} {{message.posted_by.last_name}}
+    {% endfor %}
+</div>
 </div><!--end of mid-->
 </header>
 

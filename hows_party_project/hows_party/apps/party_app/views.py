@@ -97,6 +97,7 @@ def show_event(request, event_id):
             "friends": friends,
             "event": event,
             "guests": guests,
+            "all_messages": Post.objects.all(),
         }
         return render(request, "party_app/show_event.html", context)
     elif request.method == "POST":
@@ -104,8 +105,18 @@ def show_event(request, event_id):
         find_event = Event.objects.get(id=event_id)
         find_event.users.add(find_friend)
         return redirect("/show_event/"+str(event_id))
-        
 
+def add_message(request):
+    if request.method == "POST":
+        posted = User.objects.get(first_name = request.session['first_name'], last_name=request.session['last_name'])
+        event = Post.objects.create(message=request.POST['message'], posted_by=posted)
+        return redirect("/show_event/"+str(event.id))
+
+# def remove_friend(request):
+#     remove = User.objects.get(id=event_id)
+#     remove_event.delete()
+#     user_id = request.session['id']
+#     return redirect("/user_profile/"+str(user_id))
 
 def find_friend(request):
     return render(request, "party_app/find_friend.html")

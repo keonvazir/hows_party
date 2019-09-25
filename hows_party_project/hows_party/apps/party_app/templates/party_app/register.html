@@ -36,39 +36,40 @@
                 <h5 class="card-title text-center">Register</h5>
                 <form class="form-signin" action="/reg" method="post">
                   {% csrf_token %}
-                <div class="form-label-group">
-                    <input type="text" name="first_name" class="form-control" placeholder="First name" required autofocus>
-                    <label for="first_name">First Name</label>
-                </div>
-                <div class="form-label-group">
-                    <input type="text" name="last_name" class="form-control" placeholder="Last name" required autofocus>
-                    <label for="last_name">Last Name</label>
-                </div>
-        
                   <div class="form-label-group">
-                    <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
-                    <label for="username">Username</label>
+                      <input type="text" name="first_name" class="form-control"  >
+                      <label for="first_name"> <strong>First Name</strong></label>
                   </div>
-    
+                <div class="form-label-group">
+                    <input type="text" name="last_name" class="form-control"  >
+                    <label for="last_name"> <strong>Last Name</strong></label>
+                </div>
+
                   <div class="form-label-group">
-                    <input type="email" name="email" class="form-control" placeholder="Email" required>
-                    <label for="email">Email address</label>
+                    <input type="text" name="username" class="form-control" >
+                    <label for="username"><strong>Username</strong> </label>
                   </div>
-                  
+
+                  <div class="form-label-group">
+                    <input type="email" name="email" class="form-control"  >
+                    <label for="email"><strong>Email address</strong></label>
+                  </div>
+
                   <hr>
-    
+
                   <div class="form-label-group">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
-                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" >
+                    <label for="password"><strong>Password</strong></label>
                   </div>
-                  
+
                   <div class="form-label-group">
-                    <input type="password" name="confirm_password" class="form-control" placeholder="Password" required>
-                    <label for="confirm_password">Confirm password</label>
+                    <input type="password" name="confirm_password" class="form-control" >
+                    <label for="confirm_password"><strong>Confirm password</strong></label>
                   </div>
-    
+
                   <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-                  <a class="d-block text-center mt-2 small" href="#">Sign In</a>
+                  <a class="d-block text-center mt-2 small" href="/"><strong>Sign In</strong></a>
+
                   <hr class="my-4">
                   <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit" style="background-color: 	#FE041B; color: white;"><img src="{% static 'party_app/images/google.png' %}" style="display: inline-block; height: 50px; width: 50px; margin-right: 10px;">Sign up with Google</button>
                   <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" style="background-color: 	#395297; color: white;"><img src="{% static 'party_app/images/fb.png' %}" style="display: inline-block; height: 50px; width: 50px; margin-right: 10px;"> Sign up with Facebook</button>
