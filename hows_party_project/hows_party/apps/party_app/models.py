@@ -43,7 +43,7 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     def __repr__(self):
-        return f"<User Object: {self.name}>"
+        return f"<User Object: {self.name} {self.location} {self.description} {self.date}>"
 
 
 class Post(models.Model):

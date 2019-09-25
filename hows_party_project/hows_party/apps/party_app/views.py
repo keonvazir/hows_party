@@ -65,8 +65,20 @@ def user_profile(request, user_id):
 def add_event(request):
     return render(request, "party_app/add_event.html")
 
-def show_event(request):
-    return render(request, "party_app/show_event.html")
+
+def show_event(request, event_id):
+    if "first_name" in request.session:
+        event_id = Event.objects.get(id=event_id)
+        all_event = Event.objects.all()
+
+        context = {
+            "event": event_id,
+            "all_user": User.objects.all(),
+
+        }
+        return render(request, "party_app/show_event.html", context)
+    return redirect("/user_profile/"+str(user_id))
+
 
 def find_friend(request):
     return render(request, "party_app/find_friend.html")
@@ -80,3 +92,22 @@ def meet_team(request):
 def logout(request):
     request.session.clear()
     return redirect("/") 
+
+def remove(request, event_id):
+    remove_event = Event.objects.get(id=event_id)
+    remove_event.delete()
+    user_id = request.session['id']
+    return redirect("/user_profile/"+str(user_id))
+
+def autocompleteModel(request, event_id):
+    if request.is_ajax():
+        q = request.GET.get('term', '').capitalize()
+        search_qs = Event.objects.filter(name=q)
+        results = []
+        for r in search_qs:
+            results.append(r.name)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)

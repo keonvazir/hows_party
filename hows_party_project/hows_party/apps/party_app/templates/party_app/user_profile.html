@@ -13,6 +13,9 @@
 
     <script src="{% static 'party_app/js/jquery.slim.min.js' %}"></script>
     <script src="{% static 'party_app/js/bootstrap.bundle.min.js' %}"></script>
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"> </script> <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
@@ -51,9 +54,11 @@
         </div>
         </header>
         <div class="rightheader">
-                <input type="search" placeholder="Search Events" style="background-color: white; width: 181px; height: 45px; text-align:center; font-weight:lighter; border:5px lightgrey; border-radius: 5px; margin-left:50px; margin-top:20px; vertical-align:bottom">
+                <form id=”search” method=”POST” action="/show_event/{{event.id}}">
+                    {% csrf_token %}
+                <input type="text" class=”form-control” id=”txtSearch” placeholder="search event" name=”txtSearch” style="background-color: white; width: 181px; height: 45px; text-align:center; font-weight:lighter; border:5px lightgrey; border-radius: 5px; margin-left:50px; margin-top:20px; vertical-align:bottom">
                 <button style="border-radius:5px; background-color:#254A68; color:white; font-family: Arial, Helvetica, sans-serif; margin-left: 248px; box-shadow: 2px 2px; width:50px; height:30px; margin-top:-70px;vertical-align: middle; display: inline-block">GO</button>
-
+            </form>
         </div><!--end of rightheader -->
 
         <!-- Page Content -->
@@ -84,12 +89,14 @@
             </tr>
         </thead>
         <tbody>
+            {% for event in all_events %}
             <tr>
-            <th scope="row">1</th>
-            <td>Party at Mark'ss</td>
-            <td>Sept 20th</td>
-            <td><a href="/wishes/{{wish.id}}/destroy">Remove |</a><a href="/wishes/{{wish.id}}/grant">Show!</a></td>
+            <th scope="row">{{event.id}}</th>
+            <td>{{event.name}}</td>
+            <td>{{event.created_at}}</td>
+            <td><a href="/user_profile/{{event.id}}/destroy">Remove |</a><a href="/show_event/{{event.id}}">Show!</a></td>
             </tr>
+            {% endfor %}
         </tbody>
         </table>
         </div>
@@ -98,6 +105,25 @@
             <small>Copyright &copy; Your Website</small>
         </div>
     </footer>
+
+
+    <script>
+            $(document).ready(function(){ 
+                $("#txtSearch").autocomplete({
+                    source: "/ajax_calls/search/",
+                    minLength: 2,
+                    open: function(){
+                        setTimeout(function () {
+                            $('.ui-autocomplete').css('z-index', 99);
+                        }, 0);
+                    }
+                });
+            });
+    </script>
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
