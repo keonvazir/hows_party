@@ -21,6 +21,18 @@ class UserManager(models.Manager):
             errors["confirm_password"]= "Password does not match"
         return errors
 
+class EventManager(models.Manager):
+    def basic_validator(self, postData):
+        errors = {}
+        # add keys and values to errors dictionary for each invalid field
+        if len(postData['new_name']) < 2:
+            errors["new_name"] = "Show name should be at least 2 characters"
+        if len(postData['new_description']) < 1:
+            errors["new_description"] = "Description should be at least 1 character"
+        if len(postData['new_location']) < 1:
+            errors["new_name"] = "Needs a location!"
+        return errors
+
 class User(models.Model):
     objects = UserManager()
     friends = models.ManyToManyField('self', related_name="users")
@@ -35,6 +47,7 @@ class User(models.Model):
         return f"<User Object: {self.first_name} {self.last_name}, email: {self.email} password: {self.password} username: {self.username}>"
 
 class Event(models.Model):
+    objects = EventManager()
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
     location = models.CharField(max_length=255, null=True, blank=True)

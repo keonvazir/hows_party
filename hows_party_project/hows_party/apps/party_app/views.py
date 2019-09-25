@@ -65,19 +65,46 @@ def user_profile(request, user_id):
 def add_event(request):
     return render(request, "party_app/add_event.html")
 
+def create_event(request):
+    if request.method == "GET":
+        return redirect("/")
+    if request.method == "POST":
+        errors = Event.objects.basic_validator(request.POST)
+        if len(errors)>0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            # restful = Restful.objects.all()
+            return redirect("/add_event")
+        else:
+            name = request.POST['new_name']
+            description = request.POST['new_description']
+            date = request.POST['new_date']
+            location = request.POST['new_location']
+            
+            event = Event.objects.create(name=name, description=description, date = date, location=location)
+        print("#"*80)
+        return redirect("/show_event/"+str(event.id))
+
 
 def show_event(request, event_id):
-    if "first_name" in request.session:
-        event_id = Event.objects.get(id=event_id)
+    if request.method == "GET":
+        this_user = User.objects.get(id=request.session['id'])
+        friends = this_user.friends.all()
+        event = Event.objects.get(id=event_id)
+        guests = event.users.all()
         all_event = Event.objects.all()
-
         context = {
-            "event": event_id,
-            "all_user": User.objects.all(),
-
+            "friends": friends,
+            "event": event,
+            "guests": guests,
         }
         return render(request, "party_app/show_event.html", context)
-    return redirect("/user_profile/"+str(user_id))
+    elif request.method == "POST":
+        find_friend = User.objects.get(id=request.POST['friend_id'])
+        find_event = Event.objects.get(id=event_id)
+        find_event.users.add(find_friend)
+        return redirect("/show_event/"+str(event_id))
+        
 
 
 def find_friend(request):

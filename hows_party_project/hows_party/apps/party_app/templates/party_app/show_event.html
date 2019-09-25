@@ -66,6 +66,48 @@
     <p class="font-weight-bold">Where</p><p>{{event.location}}</p>
 </div><!--end of left section-->
 
+<div class="add_guest">
+        <form action="/show_event/{{event.id}}" method="POST">
+            {% csrf_token %}
+            <select name="friend_id">
+                    {% for friend in friends %}
+                    <option value="{{friend.id}}">{{friend.first_name}} {{friend.last_name}}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" name="invite" value="Invite!">
+        </form>
+    </div><!--end of add_guest-->
+    <div class="guest_list" style="border:1px solid blue;">
+            <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 text-center">
+                            <h1 class="font-weight-light"></h1>
+                            <p class="font-weight-bold">Guest List</p>
+                            <!--TODO add jinja here to update the guest list-->
+                        </div>
+                    </div>
+                </div>
+            </div><!--end of list-->
+    <div class="table-responsive-sm">
+            <table class="table table-condensed table-borderless table-hover">
+            <caption>Guests</caption>
+                <thead class="thead-dark">
+                    <tr>
+                    <th width="12%" scope="col">Name</th>
+                    <th width="12%" scope="col">Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for friend in guests %}
+                    <tr>
+                    <td>{{friend.first_name}} {{friend.last_name}}</td>
+                    <td>{{friend.username}}</td>  
+                    </tr>
+                    {% endfor %}  
+                </tbody>
+                </table>
+            <!--end of table-->
+        </div>
 <div class="mid">
 <header class="masthead">
     <div class="container h-100">
@@ -99,17 +141,6 @@
             </div>
         </div>
 </header>
-<div class="guest_list" style="border:1px solid blue;">
-<div class="container h-100">
-        <div class="row h-100 align-items-center">
-            <div class="col-12 text-center">
-                <h1 class="font-weight-light"></h1>
-                <p class="font-weight-bold">Guest List</p>
-                <!--TODO add jinja here to update the guest list-->
-            </div>
-        </div>
-    </div>
-</div><!--end of list-->
 
 
 
