@@ -24,19 +24,16 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="#">Home
+                <a class="nav-link" href="/">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Meet the Team</a>
+                    <a class="nav-link" href="/meet_team">Meet the Team</a>
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
             </div>
@@ -57,18 +54,21 @@
                 <input type="search" placeholder="Search Events" style="background-color: white; width: 181px; height: 45px; text-align:center; font-weight:lighter; border:5px lightgrey; border-radius: 5px; margin-left:50px; margin-top:20px; vertical-align:bottom">
                 <button style="border-radius:5px; background-color:#254A68; color:white; font-family: Arial, Helvetica, sans-serif; margin-left: 248px; box-shadow: 2px 2px; width:50px; height:30px; margin-top:-70px;vertical-align: middle; display: inline-block">GO</button>
 
-            </div><!--end of rightheader -->
+        </div><!--end of rightheader -->
+
         <!-- Page Content -->
         <section class="py-5">
         <div class="container">
-            <h2 class="font-weight-light">Get Started</h2>
+            <h2 class="font-weight-light">Welcome, {{ request.session.first_name}} {{request.session.last_name}}!</h2>
             <p>Getting started is easy. Just find friends and add an event! If you have no friends don't fret, we'll help you out.</p>
+            <p><i>Here's your username:</i> {{request.session.username}}</p>
         </div>
         </section>
+    
+    
+    <button onclick="window.location.href = '/add_event';" type="button" class="btn1 btn-primary">Add an Event</button>
 
-    <button type="button" class="btn1 btn-primary">Add an Event</button>
-
-    <button type="button" class="btn2 btn-primary">Find Friends</button>
+    <button onclick="window.location.href = '/find_friend';" type="button" class="btn2 btn-primary">Find Friends</button>
     
     <h2 class="upcoming">Upcoming Events</h2>
     
@@ -88,7 +88,7 @@
             <th scope="row">1</th>
             <td>Party at Mark'ss</td>
             <td>Sept 20th</td>
-            <td><a href="/wishes/{{wish.id}}/destroy">Remove |</a><a href="/wishes/edit/{{wish.id}}">Edit |</a><a href="/wishes/{{wish.id}}/grant">Show!</a></td>
+            <td><a href="/wishes/{{wish.id}}/destroy">Remove |</a><a href="/wishes/{{wish.id}}/grant">Show!</a></td>
             </tr>
         </tbody>
         </table>

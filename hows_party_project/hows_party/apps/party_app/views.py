@@ -31,8 +31,36 @@ def login(request):
 def register_page(request):
     return render(request, "party_app/register.html")
 
+def reg(request):
+    if request.method == "POST":
+        errors = User.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect("/register_page") 
+        else:
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            email = request.POST['email']
+            password = request.POST['confirm_password']
+            new_user = User.objects.create(first_name=first_name, last_name=last_name, email=email, password=password)
+            messages.success(request, "User successfully registered")
+            request.session['first_name']=new_user.first_name
+            request.session['last_name']=new_user.last_name
+            request.session['id']=new_user.id
+            request.session['email']=new_user.email
+            return redirect("/user_profile/"+str(new_user.id))
+
 def user_profile(request, user_id):
-    return render(request, "party_app/user_profile.html")
+    if "first_name" in request.session:
+        if "last_name" in request.session:
+            if "username" in request.session:
+                context = {
+                "all_events": Event.objects.all(),
+                "all_users": User.objects.all(),
+                } 
+                return render(request, "party_app/user_profile.html", context)
+    return redirect("/user_profile/"+str(user_id))
 
 def add_event(request):
     return render(request, "party_app/add_event.html")
@@ -48,3 +76,7 @@ def photo(request):
 
 def meet_team(request):
     return render(request, "party_app/meet_team.html")
+
+def logout(request):
+    request.session.clear()
+    return redirect("/") 
