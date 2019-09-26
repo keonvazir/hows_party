@@ -114,7 +114,7 @@
                     <tr>
                     <td>{{friend.first_name}} {{friend.last_name}}</td>
                     <td>{{friend.username}}</td>  
-                    <td><a href="/show_event/{{event.id}}/destroy">Remove</a></td>
+                    <td><a href="/show_event/{{friend.id}}/destroy">Remove</a></td>
                     </tr>
                     {% endfor %}  
                 </tbody>
@@ -127,7 +127,7 @@
         <div class="row h-100 align-items-center">
             <div class="col-12 text-center">
                 <h1 class="font-weight-light"></h1>
-                <p class="font-weight-bold">Hide Posts</p>
+                <p class="font-weight-bold">Message Wall</p>
                 <div class="switch_toggle">
                 <label class="switch">
                     <input id="switch" type="checkbox">
@@ -136,7 +136,8 @@
             </div> 
             </div>
         </div>
-    </div>
+    </div><!--end of masthead-->
+
     <div class="post">
     <form action="/add_message" method="POST">
         {% csrf_token %}
@@ -152,6 +153,8 @@
     {% endfor %}
 </div>
 </div><!--end of mid-->
+
+
 </header>
 
 <header class="masthead">

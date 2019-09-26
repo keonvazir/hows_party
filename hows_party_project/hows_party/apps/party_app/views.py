@@ -56,7 +56,7 @@ def user_profile(request, user_id):
         if "last_name" in request.session:
             if "username" in request.session:
                 context = {
-                "all_events": Event.objects.all(),
+                "all_events": User.objects.get(id=user_id).events.all(),
                 "all_users": User.objects.all(),
                 } 
                 return render(request, "party_app/user_profile.html", context)
@@ -82,7 +82,8 @@ def create_event(request):
             location = request.POST['new_location']
             
             event = Event.objects.create(name=name, description=description, date = date, location=location)
-        print("#"*80)
+            this_user = User.objects.get(id=request.session['id'])
+            event.users.add(this_user)
         return redirect("/show_event/"+str(event.id))
 
 
