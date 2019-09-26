@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Profile
+                            <a class="nav-link" href="/user_profile/{{user_id}}">Profile
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -117,7 +117,7 @@
                             <th scope="row">{{event.id}}</th>
                             <td>{{event.name}}</td>
                             <td>{{event.created_at}}</td>
-                            <td><a href="/user_profile/{{event.id}}/destroy">Remove |</a><a
+                            <td><a href="/user_profile/{{event.id}}/destroy">Remove</a><br><a
                                     href="/show_event/{{event.id}}">Show!</a></td>
                         </tr>
                         {% endfor %}

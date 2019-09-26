@@ -66,7 +66,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        {% for friend in guests %}
+                                        {% for friend in friends %}
                                     <tr>
                                     <td>{{friend.first_name}} {{friend.last_name}}</td>
                                     <td>{{friend.username}}</td>  
@@ -93,7 +93,7 @@
                 <form action="/add_friend" method="POST">
                     {% csrf_token %}
                     <select name="friend_id">
-                            {% for friend in friends %}
+                            {% for friend in guests %}
                         <option value="{{friend.id}}">{{friend.first_name}} {{friend.last_name}}</option>
                         {% endfor %}
                     </select><!--jinja to autopopulate registered users who are not our friend yet-->

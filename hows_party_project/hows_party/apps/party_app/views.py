@@ -55,15 +55,21 @@ def user_profile(request, user_id):
     if "first_name" in request.session:
         if "last_name" in request.session:
             if "username" in request.session:
+                this_user = User.objects.get(id=request.session['id'])
                 context = {
                 "all_events": User.objects.get(id=user_id).events.all(),
                 "all_users": User.objects.all(),
+                "user_id": this_user.id,
                 } 
                 return render(request, "party_app/user_profile.html", context)
     return redirect("/user_profile/"+str(user_id))
 
 def add_event(request):
-    return render(request, "party_app/add_event.html")
+    this_user = User.objects.get(id=request.session['id'])
+    context = {
+        "user_id": this_user.id,
+    }
+    return render(request, "party_app/add_event.html", context)
 
 def create_event(request):
     if request.method == "GET":
@@ -99,6 +105,7 @@ def show_event(request, event_id):
             "event": event,
             "guests": guests,
             "all_messages": Post.objects.all(),
+            "user_id": this_user.id,
         }
         return render(request, "party_app/show_event.html", context)
     elif request.method == "POST":
@@ -120,14 +127,8 @@ def add_message(request):
 #     return redirect("/user_profile/"+str(user_id))
 
 def find_friend(request):
-    context = {
-        'friends':User.objects.all()
-    }
-    return render(request, "party_app/find_friend.html", context)
-
-def add_friend(request):
     this_user = User.objects.get(id=request.session['id'])
-    if request.method == "POST":
+    if request.method == "GET":
         friends = this_user.friends.all()
         others = User.objects.all()
         main_list = [friend for friend in others if friend not in friends]
@@ -136,10 +137,14 @@ def add_friend(request):
             "all_users": User.objects.all(),
             "guests": main_list,
         }
-        return render(request, "party_app/find_friend.html", context)
-    elif request.method == "POST":
+    return render(request, "party_app/find_friend.html", context)
+
+def add_friend(request):
+    if request.method == "POST":
+        this_user = User.objects.get(id=request.session['id'])
         find_friend = User.objects.get(id=request.POST['friend_id'])
         this_user.friends.add(find_friend)
+        # find_friend.users.add(this_user)
         return redirect("/find_friend")
 
 def photo(request):
