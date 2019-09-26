@@ -29,20 +29,14 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="#">Home
+                <a class="nav-link" href="/user_profile/{{all_users_id}}">Profile
                         <span class="sr-only">(current)</span>
                 </a>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Add an Event</a>
+                    <a class="nav-link" href="/add_event">Add an Event</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Back</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
             </div>
@@ -51,17 +45,40 @@
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
+            <br><br>
             <h2 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Current Friends <!--jquery slide up TODO-->
                 </button>
             </h2>
-            </div>
+        </div>
+    </div>
         
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 
-            </div>
+                    <div class="table-responsive-sm">
+                            <table class="table table-condensed table-borderless table-hover">
+                            <caption>Friends</caption>
+                                <thead class="thead-dark">
+                                    <tr>
+                                    <th width="12%" scope="col">Name</th>
+                                    <th width="12%" scope="col">Username</th>
+                                    <th width="12%" scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        {% for friend in guests %}
+                                    <tr>
+                                    <td>{{friend.first_name}} {{friend.last_name}}</td>
+                                    <td>{{friend.username}}</td>  
+                                    <td><a href="/find_friend">Remove</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                </table>
+                            <!--end of table-->
+                        </div>
+                </div>
             </div>
         </div>
         <div class="card">
@@ -74,9 +91,12 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
-                <form action="#" method="POST">
-                    <select>
-                        <option value="Friend1">Friend1</option>
+                <form action="/add_friend" method="POST">
+                    {% csrf_token %}
+                    <select name="friend_id">
+                            {% for friend in friends %}
+                        <option value="{{friend.id}}">{{friend.first_name}} {{friend.last_name}}</option>
+                        {% endfor %}
                     </select><!--jinja to autopopulate registered users who are not our friend yet-->
                     <input type="submit" value="Add New Friends"><br>
                 </form>

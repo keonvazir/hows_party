@@ -35,6 +35,7 @@ class EventManager(models.Manager):
 
 class User(models.Model):
     objects = UserManager()
+    image = models.ImageField(upload_to='media/', blank=True, null=True)
     friends = models.ManyToManyField('self', related_name="users")
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)

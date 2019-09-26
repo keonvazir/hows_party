@@ -119,10 +119,39 @@ def add_message(request):
 #     return redirect("/user_profile/"+str(user_id))
 
 def find_friend(request):
-    return render(request, "party_app/find_friend.html")
+    context = {
+        'friends':User.objects.all()
+    }
+    return render(request, "party_app/find_friend.html", context)
+
+def add_friend(request):
+    this_user = User.objects.get(id=request.session['id'])
+    if request.method == "POST":
+        friends = this_user.friends.all()
+        others = User.objects.all()
+        main_list = [friend for friend in others if friend not in friends]
+        context = {
+            "friends": friends,
+            "all_users": User.objects.all(),
+            "guests": main_list,
+        }
+        return render(request, "party_app/find_friend.html", context)
+    elif request.method == "POST":
+        find_friend = User.objects.get(id=request.POST['friend_id'])
+        this_user.friends.add(find_friend)
+        return redirect("/find_friend")
 
 def photo(request):
     return render(request, "party_app/photo.html")
+
+def add_image(request):
+    if request.method == "POST":
+        this_user = User.objects.get(id=request.session['id'])
+        this_user.image = request.POST["image"]
+        this_user.save()
+        print(this_user.image)
+        return redirect("/photo")
+    return redirect('/photo')
 
 def meet_team(request):
     return render(request, "party_app/meet_team.html")

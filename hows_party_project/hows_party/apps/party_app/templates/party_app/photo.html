@@ -89,7 +89,9 @@
                 </a>
           </div>
         </div>
-        <form action="#" method="POST">
+        <form action="/add_image" method="POST">
+            {% csrf_token %}
+            <input type="file" name="image" accept="image/*">
             <input type="submit" value="Add a Photo">
         </form>
       </div><!--end of container-->
