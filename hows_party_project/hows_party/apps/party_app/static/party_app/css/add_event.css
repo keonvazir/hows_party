@@ -31,7 +31,7 @@
 .event{
     display: inline-block;
     vertical-align: top;
-    margin-top: -330px;
+    margin-top: -300px;
     margin-left: -200px;
     width: 30px;
     height: 30px;
@@ -53,4 +53,17 @@
     margin-left: -138px;
     margin-top: 100px;
 
+}
+.image {
+    display: inline-block;
+    vertical-align: top;
+    background-image: url('http://goldstarprotectivecoatings.co/wp-content/uploads/2019/08/world-map-art-world-map-watercolors-world-map-artsy-cheap-world-map-canvas-art.jpg');
+    background-size:600px;
+    height: 300px;
+    width: 893px;
+    margin-left: 0px;
+    margin-top: -13px;
+}
+.container1 {
+    margin-top: 20px;
 }
