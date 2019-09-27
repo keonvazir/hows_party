@@ -104,7 +104,7 @@ def show_event(request, event_id):
             "friends": friends,
             "event": event,
             "guests": guests,
-            "all_messages": Post.objects.all(),
+            "all_messages": event.posts.all(),
             "user_id": this_user.id,
         }
         return render(request, "party_app/show_event.html", context)
@@ -114,17 +114,20 @@ def show_event(request, event_id):
         find_event.users.add(find_friend)
         return redirect("/show_event/"+str(event_id))
 
-def add_message(request):
+def add_message(request, event_id): 
     if request.method == "POST":
         posted = User.objects.get(first_name = request.session['first_name'], last_name=request.session['last_name'])
-        event = Post.objects.create(message=request.POST['message'], posted_by=posted)
-        return redirect("/show_event/"+str(event.id))
+        event_posted_on = Event.objects.get(id=event_id)
+        #On create, add event_post=event_posted_on
+        post = Post.objects.create(message=request.POST['message'], posted_by=posted, event_post=event_posted_on)
+        return redirect("/show_event/"+str(event_id))
 
-# def remove_friend(request):
-#     remove = User.objects.get(id=event_id)
-#     remove_event.delete()
-#     user_id = request.session['id']
-#     return redirect("/user_profile/"+str(user_id))
+def remove_user(request, event_id, user_id):
+    
+    uninvited = User.objects.get(id=user_id)
+    event = Event.objects.get(id=event_id)
+    event.users.remove(uninvited)
+    return redirect("/show_event/"+str(event_id))
 
 def find_friend(request):
     this_user = User.objects.get(id=request.session['id'])
@@ -136,6 +139,7 @@ def find_friend(request):
             "friends": friends,
             "all_users": User.objects.all(),
             "guests": main_list,
+            "user_id": this_user.id,
         }
     return render(request, "party_app/find_friend.html", context)
 
@@ -184,3 +188,9 @@ def autocompleteModel(request, event_id):
         data = 'fail'
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+def remove_friend(request, user_id):
+    logged_in_user = User.objects.get(id=request.session['id'])
+    remove_new_friend = User.objects.get(id=user_id)
+    logged_in_user.friends.remove(remove_new_friend)
+    return redirect("/find_friend")

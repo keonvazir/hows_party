@@ -19,8 +19,9 @@ urlpatterns = [
     url(r'^logout$', views.logout),
     url(r'^user_profile/(?P<event_id>\d+)/destroy$', views.remove),
     url(r'^ajax_calls/search/', views.autocompleteModel),
-    url(r'^add_message$', views.add_message),
+    url(r'^add_message/(?P<event_id>)$', views.add_message),
     url(r'^add_image$', views.add_image),
-    # url(r'^show_event/(?P<user_id>\d+)/destroy$', views.remove_friend),
+    url(r'^show_event/(?P<user_id>\d+)/(?P<event_id>\d+)/destroy$', views.remove_user),
+    url(r'^remove_friend/(?P<user_id>\d+)$', views.remove_friend),
 
 ]
