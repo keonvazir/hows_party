@@ -32,9 +32,10 @@
     </style> -->
 </head>
 <body>
+    <div class="wrapper" style="background: linear-gradient(to bottom left, #ff9933 0%, #ffffff 100%)">
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
                 <div class="container">
-                    <a class="navbar-brand" href="#">Hows Party</a>
+                    <a class="navbar-brand" href="/">Haus Party</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
@@ -45,6 +46,12 @@
                                 <span class="sr-only">(current)</span>
                         </a>
                         <li class="nav-item">
+                            <a class="nav-link" href="/meet_team">Meet the Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/find_friend">Friends</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
@@ -53,7 +60,7 @@
                 </nav>
                 
                 <!-- Full Page Image Header with Vertically Centered Content -->
-                <header class="masthead">
+            <header class="masthead">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 text-center">
@@ -62,8 +69,8 @@
                         </div>
                     </div>
                 </div>
-                </header>
-        <form action="/create_event" method="POST">
+            </header>
+        <form action="/create_event" method="POST" style="margin-left: 10px; display: inline-block;">
             {% csrf_token %}
         <div class="form-group row">
             <label for="new_name" class="col-sm-2 col-form-label">Event Name
@@ -87,10 +94,28 @@
             </div>
             </div>
         
-        <div class="event_location">
+       <div class="event">
         <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.1940370061097!2d-122.1372801730916!3d37.43252069346078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbafb83b6ded7%3A0xddff2cc31c3fa3ad!2s2380%20Waverley%20St%2C%20Palo%20Alto%2C%20CA%2094301!5e0!3m2!1sen!2sus!4v1569310122302!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0; display: inline-block; vertical-align: top; margin-left: 500px;" allowfullscreen=""></iframe></p></div>
         
-        <!-- <div id="map"></div>
+
+    <div class="create">
+        <div class="form-group row">
+            <div class="col-sm-10">
+            <button type="submit" class="btn1 btn-primary">Create Event!</button>
+            </div>
+        </div>
+    </div>
+    </form>
+        <div class="cancel" >
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                    <button type="submit" style="background-color: grey;" class="btn btn-primary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+
+     <!-- <div id="map"></div>
     <script>
         function initMap() {
             var uluru = {lat: -25.344, lng: 131.036};
@@ -102,22 +127,6 @@
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8Wo_naqZdVTw8sdnwKBmksGyjV73txbY&callback=initMap">
         </script> -->
-
-
-        <div class="form-group row">
-            <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Create Event!</button>
-            </div>
-        </div>
-    </form>
-
-    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-    <div class="container text-center">
-        <small>Copyright &copy; Your Website</small>
-    </div>
-    </footer>
-
-
 <!-- <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
 
 <!-TODO: Add SDKs for Firebase products that you want to use
@@ -142,7 +151,7 @@
 </script> -->
 
 
-
+</div><!--end of wrapper-->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

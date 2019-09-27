@@ -11,7 +11,7 @@
     vertical-align: top;
     margin-left: 800px;
 }
-.btn{
+.btn1{
     display: inline-block;
     vertical-align: top;
     margin-left:400px;
@@ -20,16 +20,37 @@
     border-radius: 37px;
     box-shadow: 2px 2px black;
 }
-#map{
+/* #map{
     height: 500px;
     width: 100%;
     background-color: grey;
-
-}
-
-/* .event_loaction{
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 500px;
+    display: inline-block
 
 } */
+
+.event{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: -330px;
+    margin-left: -200px;
+    width: 30px;
+    height: 30px;
+
+
+}
+.create{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+    margin-left: -205px;
+}
+
+.cancel {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    vertical-align: top;
+    margin-left: -138px;
+    margin-top: 100px;
+
+}

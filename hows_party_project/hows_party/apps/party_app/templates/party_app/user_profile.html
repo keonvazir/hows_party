@@ -6,21 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User Profile</title>
     {% load static %}
+
     <link rel="stylesheet" href="{% static 'party_app/css/user_profile.css' %}">
+
     <link rel="stylesheet" href="{% static 'party_app/css/all.css' %}">
+
     <link rel="stylesheet" href="{% static 'party_app/css/bootstrap.min.css' %}">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script src="{% static 'party_app/js/jquery.slim.min.js' %}"></script>
+
     <script src="{% static 'party_app/js/bootstrap.bundle.min.js' %}"></script>
 
 
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"> </script> <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"> </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top" style="margin-right: 427px">
             <div class="container">
-                <a class="navbar-brand" href="#">Hows Party</a>
+                <a class="navbar-brand" href="/">Haus Party</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,33 +54,14 @@
         </nav>
         
         <!-- Full Page Image Header with Vertically Centered Content -->
-        <header class="masthead">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12 text-center">
-                </div>
-            </div>
-        </div>
-        </header>
-        <div class="container" style="display: inline-block; vertical-align: top">
-
-                <header class="masthead">
-                    <div class="container h-100">
-                        <div class="row h-100 align-items-center">
-                            <div class="col-12 text-center">
-                                <h1 class="font-weight-light"></h1>
-                                <br><br>
-                            </div>
-                        </div>
-                    </div>
-                </header>
+        <div class="container" style="display: inline-block; vertical-align: top; background: linear-gradient(to right, #ff9933 0%, #ffffff 100%);">
 
                 <div class="rightheader">
                     <div class="container" >
                         <form id=”search” method=”POST” action="/show_event/{{event.id}}">
                             {% csrf_token %}
                             <input type="text" class=”form-control” id=”txtSearch” placeholder="search event" name=”txtSearch”
-                                style="background-color: white; width: 181px; height: 45px; text-align:center; font-weight:lighter; border:5px lightgrey; border-radius: 5px; margin-left:45px; margin-top:20px; vertical-align:bottom">
+                                style="background: linear-gradient(to bottom left, #ff9933 0%, #ffffff 100%); width: 181px; height: 45px; text-align:center; font-weight:lighter; border:5px lightgrey; border-radius: 5px; margin-left:45px; margin-top:20px; vertical-align:bottom">
                             <button
                                 style="border-radius:5px; background-color:#254A68; color:white; font-family: Arial, Helvetica, sans-serif; margin-left: 240px; box-shadow: 2px 2px; width:50px; height:30px; margin-top:-70px;vertical-align: middle;">GO</button>
                         </form>
@@ -80,7 +70,7 @@
         <!--end of rightheader -->
 
         <!-- Page Content -->
-        <div class="container">
+        <div class="container" style="display: inline-block;">
                 <div class="container">
                     <br><br>
                     <h2 class="font-weight-light">Welcome, {{ request.session.first_name}} {{request.session.last_name}}!
@@ -90,17 +80,18 @@
                     <p><i>Here's your username:</i> {{request.session.username}}</p>
                 </div>
         
-        
                 <button onclick="window.location.href = '/add_event';" type="button" class="btn1 btn-primary">Add an
-                    Event</button>
+                    Event!</button>
         
                 <button onclick="window.location.href = '/find_friend';" type="button" class="btn2 btn-primary">Find
-                    Friends</button>
+                    Friends!</button>
             </div>
-        
             
+            <div class="side">
+            </div><!--end of side-->
+            
+
             <div class="container mt-5">
-                
                 <h2 class="upcoming text-center">Upcoming Events</h2>
                 <table class="table table-hover">
                     <thead>
@@ -117,8 +108,8 @@
                             <th scope="row">{{event.id}}</th>
                             <td>{{event.name}}</td>
                             <td>{{event.created_at}}</td>
-                            <td><a href="/user_profile/{{event.id}}/destroy">Remove</a><br><a
-                                    href="/show_event/{{event.id}}">Show!</a></td>
+                            <td><a
+                                href="/show_event/{{event.id}}">Show!</a><br><a href="/user_profile/{{event.id}}/destroy"><i style="font-size: small;">Remove</i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

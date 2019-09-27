@@ -28,19 +28,20 @@
   </div>
 <div class="container">
   <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-      <div class="card card-signin my-5">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" style="background-color: black; margin-top:60px;" >
+      <div class="card card-signin my-5" >
         <div class="card-body">
-        <h5 class="card-title text-center">Sign In</h5>
+        <h5 class="card-title text-center">Haus Party</h5>
+        <h4 class="card-title text-center" style="font-size: smaller">Sign In</h4>
         <form class="form-signin" action="/login" method="POST">
           {% csrf_token %}
           <div class="form-label-group">
-          <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+          <input type="email" name="email" class="form-control" required autofocus>
           <label for="email">Email address</label>
       </div>
 
       <div class="form-label-group">
-        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" class="form-control" required>
         <label for="password">Password</label>
       </div>
 
@@ -51,17 +52,16 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
       <hr class="my-4">
-      <button class="btn btn-lg btn-google btn-block" type="submit" style="background-color: 	#FE041B; color: white;"><img src="{% static 'party_app/images/google.png' %}" style="display: inline-block; height: 50px; width: 50px; margin-right: 10px;"> Sign in with Google</button>
+      <button class="btn btn-lg btn-google btn-block" type="submit" style="background-color: 	#FE041B; color: white;"><img src="{% static 'party_app/images/google.png' %}" style="display: inline-block; height: 40px; width: 50px; margin-right: 10px;"> Sign in with Google</button>
       <button class="btn btn-lg btn-facebook btn-block" type="submit" style="background-color: 	#395297; color: white;">
-        <img src="{% static 'party_app/images/fb.png' %}" style="display: inline-block; height: 50px; width: 50px; margin-right: 10px;"> Sign in with Facebook</button>
+        <img src="{% static 'party_app/images/fb.png' %}" style="display: inline-block; height: 40px; width: 50px; margin-right: 10px;"> Sign in with Facebook</button><br>
+        <div class="footer" style=" text-align: center;"><a href="/register_page" style="color: rgb(7, 7, 7);">Don't have an account? Register</a></div>
     
   </div>
 </div>
 </div>
 </div>
 </div>
-<div class="footer" style=" text-align: center;"><a href="/register_page" style="color: white;">Don't have an account? Register</a></div>
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -1,7 +1,7 @@
 .btn1 {
   display: inline-block;
   vertical-align: top;
-  margin-left: 153px;
+  margin-left: 90px;
   width: 300px;
   height: 70px;
   box-shadow: 5px 5px black;
@@ -10,12 +10,12 @@
 .btn2 {
   display: inline-block;
   vertical-align: top;
-  margin-left: 153px;
+  margin-left: 90px;
   width: 300px;
   height: 70px;
   box-shadow: 5px 5px black;
   border-radius: 20px;
-  margin-top: 10px;
+  margin-top: 18px;
 }
 
 #page-content {
@@ -36,9 +36,9 @@ box-shadow: 3px 3px black;
 .rightheader {
   display: inline-block;
   vertical-align: top;
-  width:312px;
-  height:90px;
-  margin-top: 30px;
+  width:332px;
+  height:82px;
+  margin-top: 3px;
   background-color:    #444444;
   border-radius: 30px;
   box-shadow:3px 3px;
@@ -46,3 +46,13 @@ box-shadow: 3px 3px black;
 
 }
 
+.side{
+  display: inline-block;
+  vertical-align: top;
+  width: 166px;
+  height: 362px;
+  background-image: url('https://media.giphy.com/media/gprJepLJeCl5C/giphy.gif');
+  margin-left: 495px;
+  margin-top: -342px;
+  border-radius: 20px;
+}

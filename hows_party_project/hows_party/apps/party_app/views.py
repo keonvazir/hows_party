@@ -118,7 +118,6 @@ def add_message(request, event_id):
     if request.method == "POST":
         posted = User.objects.get(first_name = request.session['first_name'], last_name=request.session['last_name'])
         event_posted_on = Event.objects.get(id=event_id)
-        #On create, add event_post=event_posted_on
         post = Post.objects.create(message=request.POST['message'], posted_by=posted, event_post=event_posted_on)
         return redirect("/show_event/"+str(event_id))
 
