@@ -1,0 +1,12 @@
+/* * {
+    outline: dotted red 1px;
+} */
+
+.whitespace {
+    display: inline-block;
+    vertical-align: top;
+    background-image: url('https://shawglobalnews.files.wordpress.com/2019/04/equal-pay-day-doing-things-right.png?w=720&h=379&crop=1');
+    background-size:600px;
+    height: 500px;
+    width: 700px;
+}

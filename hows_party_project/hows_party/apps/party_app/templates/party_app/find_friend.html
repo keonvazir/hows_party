@@ -41,7 +41,7 @@
             </div>
         </div>
     </nav>     
-    <div class="accordion" id="accordionExample">
+    <div class="accordion" id="accordionExample" style="background: linear-gradient(to bottom left, #ff9933 0%, #ffffff 100%)">
         <div class="card">
             <div class="card-header" id="headingOne">
             <br><br>
@@ -53,7 +53,7 @@
         </div>
     </div>
         
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" >
             <div class="card-body">
                     <div class="table-responsive-sm">
                             <table class="table table-condensed table-borderless table-hover">
@@ -80,15 +80,15 @@
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header" id="headingTwo">
+        <div class="card" >
+            <div class="card-header" id="headingTwo" >
             <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Find Friends!<!--jquery slide up TODO-->
                 </button>
             </h2>
             </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="background: linear-gradient(to bottom left, #ff9933 0%, #ffffff 100%)">
             <div class="card-body">
                 <form action="/add_friend" method="POST">
                     {% csrf_token %}
@@ -96,12 +96,14 @@
                             {% for friend in guests %}
                         <option value="{{friend.id}}">{{friend.first_name}} {{friend.last_name}}</option>
                         {% endfor %}
-                    </select><!--jinja to autopopulate registered users who are not our friend yet-->
+                    </select>
                     <input type="submit" value="Add New Friends"><br>
                 </form>
             </div>
             </div>
         </div>
+    </div>
+    <div class="whitespace">
     </div>
 </div>
 
