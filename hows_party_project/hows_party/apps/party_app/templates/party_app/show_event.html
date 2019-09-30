@@ -155,7 +155,7 @@
 </div>
 <div id="messages"class="messages">
     {% for message in all_messages%}
-    {{message.message}}, by:
+    {{message.message}}-----
     {{message.posted_by.first_name}} {{message.posted_by.last_name}}
     <br><hr>
     {% endfor %}

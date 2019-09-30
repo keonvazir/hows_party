@@ -62,8 +62,8 @@ class Event(models.Model):
 
 class Post(models.Model):
     message = models.CharField(max_length=255)
-    posted_by = models.ForeignKey(User, related_name="users_post", null=True, blank=True)
-    event_post = models.ForeignKey(Event, related_name="posts", null=True, blank=True)
+    posted_by = models.ForeignKey(User, related_name="users_post", null=True, blank=True, on_delete=models.PROTECT)
+    event_post = models.ForeignKey(Event, related_name="posts", null=True, blank=True, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     def __repr__(self):
