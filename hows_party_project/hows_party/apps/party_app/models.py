@@ -49,11 +49,11 @@ class User(models.Model):
 
 class Event(models.Model):
     objects = EventManager()
-    name = models.CharField(max_length=255)
-    description = models.TextField(null=True, blank=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    description = models.CharField(max_length=255)
     location = models.CharField(max_length=255, null=True, blank=True)
     date = models.DateField(auto_now=False, auto_now_add=False)
-    users = models.ManyToManyField(User, related_name="events")
+    users = models.ManyToManyField(User, related_name="events", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     def __repr__(self):
@@ -61,9 +61,9 @@ class Event(models.Model):
 
 
 class Post(models.Model):
-    message = models.CharField(max_length=255)
-    posted_by = models.ForeignKey(User, related_name="users_post", null=True, blank=True, on_delete=models.PROTECT)
-    event_post = models.ForeignKey(Event, related_name="posts", null=True, blank=True, on_delete=models.PROTECT)
+    message = models.CharField(max_length=255, null=True, blank=True)
+    posted_by = models.ForeignKey(User, related_name="users_post", null=True, blank=True, on_delete=models.CASCADE)
+    event_post = models.ForeignKey(Event, related_name="posts", null=True, blank=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     def __repr__(self):

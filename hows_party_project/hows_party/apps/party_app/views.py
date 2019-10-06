@@ -49,7 +49,7 @@ def reg(request):
             request.session['last_name']=new_user.last_name
             request.session['id']=new_user.id
             request.session['email']=new_user.email
-            return redirect("/user_profile/"+str(new_user.id))
+            return redirect("/")
 
 def user_profile(request, user_id):
     if "first_name" in request.session:
@@ -171,6 +171,7 @@ def logout(request):
 
 def remove(request, event_id):
     remove_event = Event.objects.get(id=event_id)
+    # remove_event.posts.all().delete()
     remove_event.delete()
     user_id = request.session['id']
     return redirect("/user_profile/"+str(user_id))
