@@ -24,13 +24,13 @@ switch {
   .slider:before {
     display: inline-block;
     content: "";
-    height: 43px;
-    width: 80px;
+    height: 33px;
+    width: 70px;
     left: 4px;
     bottom: 4px;
     background-color: white;
     -webkit-transition: 1.4s;
-    transition: 2.2s;
+    transition: 2s;
   }
   
   input:checked + .slider {
