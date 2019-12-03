@@ -63,7 +63,7 @@ AIzaSyBmssFnZGmm6BlIU00bLXdu9ccTWnHBjH8&libraries=places&callback=initAutocomple
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 text-center">
-                            <h1 class="font-weight-light">Add an Event!</h1>
+                            <h1 class="masthead"style="font-style: normal;">Add an Event!</h1>
                         </div>
                     </div>
                 </div>
@@ -71,27 +71,31 @@ AIzaSyBmssFnZGmm6BlIU00bLXdu9ccTWnHBjH8&libraries=places&callback=initAutocomple
         <form action="/create_event" method="POST" style="margin-left: 10px; display: inline-block;">
             {% csrf_token %}
         <div class="form-group row">
-            <label for="new_name" class="col-sm-2 col-form-label">Event Name
-            <input type="text" name="new_name">
+            <label for="new_name" class="col-sm-2 col-form-label" style="font-family: Verdana, Geneva, Tahoma, sans-serif">Event Name
+            <input type="text" name="new_name" class="font-weight-lighter">
             </label>
         </div>
         <div class="form-group row">
-                <label for="new_description" class="col-sm-2 col-form-label">Description
-                <input type="text" name="new_description">
+                <label for="new_description" class="col-sm-2 col-form-label" style="font-family: Verdana, Geneva, Tahoma, sans-serif">Description
+                <textarea class="font-weight-lighter" name="new_description">
+                </textarea>
                 </label>
             </div>
 
 <!--START OF GOOGLE CAL!-->
 <div class="form-group row">
 
-    <button id="authorize_button" style="display: none; background-color: white; margin:10px; border-radius: 20px; width: 70px; height: 50px;"><span style="color: blue;">G</span><span style="color: red;">o</span><span style="color: yellow;">o</span><span style="color: blue">g</span><span style="color:green;">l</span><span style="color: red">e</span><br> Cal</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
+    <button id="authorize_button" style="display: outline-dark; background-color: white; margin:10px; border-radius: 20px; width: 100px; height: 70px; font-size: larger"><span style="color: blue;">G</span><span style="color: red;">o</span><span style="color: yellow;">o</span><span style="color: blue">g</span><span style="color:green;">l</span><span style="color: red">e</span><br> Cal</button>
+    
+    <!-- <button id="signout_button" >Sign Out</button> -->
 
-    <!-- <pre id="content" style="white-space: pre-wrap;"></pre> -->
-
+<!------------------------------------------------->
+<!--GOOGLE CALENDAR API-->
+<!------------------------------------------------->
     <script type="text/javascript">
 
       var CLIENT_ID = '855028744123-lalb4f79fuc1l56970stf9qsaugq6ok0.apps.googleusercontent.com';
+
       var API_KEY = 'AIzaSyA19hd4dvnJqA_OaTM0lcYPVSz_hhGvLbk';
 
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -173,13 +177,16 @@ AIzaSyBmssFnZGmm6BlIU00bLXdu9ccTWnHBjH8&libraries=places&callback=initAutocomple
           }
         });
       }
-
     </script>
+<!------------------------------------------------->
+<!--END OF GOOGLE CALENDAR API -->
+<!------------------------------------------------->
 
-        <label for="new_date" class="col-sm-2 col-form-label">Date
-        <input type="date" name="new_date">
+        <label for="new_date" class="col-sm-2 col-form-label" style="font-family: Verdana, Geneva, Tahoma, sans-serif">Date
+        <input type="date" name="new_date" class="font-weight-lighter">
         </label>
-</div>
+  </div><!--end of Google cal div-->
+
             <div class="form-group row">
                 <label for="new_location" class="col-sm-2 col-form-label">Location
                 <input type="text" name="new_location">
