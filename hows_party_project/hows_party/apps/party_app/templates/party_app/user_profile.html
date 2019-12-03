@@ -93,11 +93,13 @@
         <div class="container" style="display: inline-block;">
                 <div class="container">
                     <br><br>
-                    <h2 class="font-weight-light">Welcome, {{ request.session.first_name}} {{request.session.last_name}}!
-                    </h2>
+                    <h2 class="font-weight-light">Welcome, <span style="font-weight: bolder">{{request.session.first_name}} {{request.session.last_name}}!
+                    </h2></span><br>
+                    <p><i>Here's your email:</i> {{request.session.email}}</p>
+                    <hr>
                     <p>Getting started is easy. Just find friends and add an event! If you have no friends don't fret, we'll
-                        help you out.</p>
-                    <p><i>Here's your username:</i> {{request.session.username}}</p>
+                    help you out.</p><br>
+                    
                 </div>
         
                 <button onclick="window.location.href = '/add_event';" type="button" class="btn1 btn-primary">Add an
@@ -106,19 +108,21 @@
                 <button onclick="window.location.href = '/find_friend';" type="button" class="btn2 btn-primary">Find
                     Friends!</button>
             </div>
-            
+
+            <hr>
+
             <div class="side">
             </div><!--end of side-->
             
 
             <div class="container mt-5">
-                <h2 class="upcoming text-center">Upcoming Events</h2>
+                <h2 class="upcoming text-center">Upcoming Events</h2><br>
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Event Name</th>
-                            <th scope="col">Date created</th>
+                            <th scope="col">Date Created</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -137,7 +141,7 @@
             </div>
         </div>
         
-        
+        <!--Autocomplete Search-->
         <script>
             $(document).ready(function () {
                 $("#txtSearch").autocomplete({
@@ -151,9 +155,7 @@
                 });
             });
         </script>
-
-
-
+<!--end of Autocomplete-->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

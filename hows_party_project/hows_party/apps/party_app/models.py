@@ -41,7 +41,7 @@ class User(models.Model):
     friends = models.ManyToManyField('self', related_name="users")
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    username = models.CharField(max_length=255, null=True, blank=True)
+    username = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
