@@ -8,6 +8,8 @@ class UserManager(models.Manager):
         for existing_user in User.objects.all():
             if existing_user.email == postData['email']:
                 errors["email_exists"] = "We already have a user with this email"
+        if len(postData['username']) <1:
+            errors["username"] = "username needs to exist!"
         if len(postData['first_name']) < 2:
             errors["first_name"] = "first name should be at least 2 characters"
         if len(postData['last_name']) < 2:
