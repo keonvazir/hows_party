@@ -42,11 +42,13 @@ def reg(request):
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             email = request.POST['email']
+            username = request.POST['username']
             password = request.POST['confirm_password']
-            new_user = User.objects.create(first_name=first_name, last_name=last_name, email=email, password=password)
+            new_user = User.objects.create(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
             messages.success(request, "User successfully registered")
             request.session['first_name']=new_user.first_name
             request.session['last_name']=new_user.last_name
+            request.session['username']=new_user.username
             request.session['id']=new_user.id
             request.session['email']=new_user.email
             return redirect("/")
