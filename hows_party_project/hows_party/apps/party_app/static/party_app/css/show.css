@@ -15,8 +15,8 @@ switch {
     display: inline-block;
     cursor: pointer;
     background-color: #ccc;
-    -webkit-transition: 1.4s;
-    transition: .4s;
+    -webkit-transition: 2.4s;
+    transition: 2.4s;
     vertical-align: top;
     margin-left: -50px;
   }
@@ -29,8 +29,8 @@ switch {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: 1.4s;
-    transition: 2s;
+    -webkit-transition: 2.4s;
+    transition: 3s;
   }
   
   input:checked + .slider {
@@ -53,7 +53,7 @@ switch {
   }
   
   .slider.round:before {
-    border-radius: 50%;
+    border-radius: 70%;
   }
   .switch_toggle {
       display: inline-block;
