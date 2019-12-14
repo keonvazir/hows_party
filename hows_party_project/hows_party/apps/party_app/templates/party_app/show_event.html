@@ -100,7 +100,6 @@
                         <div class="col-12 text-center">
                             <h1 class="font-weight-light"></h1>
                             <p class="font-weight-bold">Guest List</p>
-                            <!--TODO add jinja here to update the guest list-->
                         </div>
                     </div>
                 </div>
@@ -145,17 +144,17 @@
         </div>
     </div><!--end of masthead-->
 
-    <div class="post">
+    <div class="post" style="margin-left: 40px;">
     <form action="/add_message/{{event.id}}" method="POST">
         {% csrf_token %}
         <input type="text" name="message">
-        <input type="submit" value="Make a Post">
+        <button class="btn btn-primary" style="margin-left: 20px;">Make a Post</button>
     </form>
-</div>
+</div><br>
 <div id="messages"class="messages">
     {% for message in all_messages%}
-    {{message.message}}-----
-    {{message.posted_by.first_name}} {{message.posted_by.last_name}}
+    {{message.message}}<br>
+    <span style="color: darkblue">{{message.posted_by.first_name}} {{message.posted_by.last_name}}</span>
     <br><hr>
     {% endfor %}
 </div>
